@@ -1,0 +1,9 @@
+<div *ngFor="let entry of entries,let i = index " class="data-entry">
+	<data-entry (updateEvent)="updateEvent($event,i)"></data-entry>
+	<button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+		<mat-icon>delete</mat-icon>
+    </button>
+</div>
+
+<button mat-button color="primary" (click)="addDataEntry()">ADD</button>
+<button mat-button color="primary" (click)="saveData()">SAVE</button>

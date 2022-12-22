@@ -1,0 +1,21 @@
+<div>
+	<mat-form-field appearance="outline">
+		<mat-label>Symbol</mat-label>
+		<input matInput type="text" (change)="changeSymbol($event)" placeholder="Symbol">
+	</mat-form-field>
+	<mat-form-field appearance="outline" class="input">
+		<mat-label>Count</mat-label>
+		<input matInput type="number" (change)="changeNum($event)" placeholder="Count">
+	</mat-form-field>
+	<mat-form-field appearance="outline">
+		<mat-label>Rate</mat-label>
+		<input matInput type="number" (change)="changeRate($event)" placeholder="Rate">
+	</mat-form-field>
+	<mat-form-field appearance="fill" class="input">
+		<mat-select required>
+			<mat-option value="buy">Buy</mat-option>
+			<mat-option value="sale">Sale</mat-option>
+		</mat-select>
+		<mat-label>Buy/Sale</mat-label>
+	</mat-form-field>
+</div>
