@@ -1,21 +1,34 @@
 <div>
-	<mat-form-field appearance="outline">
-		<mat-label>Symbol</mat-label>
-		<input matInput type="text" (change)="changeSymbol($event)" placeholder="Symbol">
-	</mat-form-field>
-	<mat-form-field appearance="outline" class="input">
-		<mat-label>Count</mat-label>
-		<input matInput type="number" (change)="changeNum($event)" placeholder="Count">
-	</mat-form-field>
-	<mat-form-field appearance="outline">
-		<mat-label>Rate</mat-label>
-		<input matInput type="number" (change)="changeRate($event)" placeholder="Rate">
-	</mat-form-field>
-	<mat-form-field appearance="fill" class="input">
-		<mat-select required>
-			<mat-option value="buy">Buy</mat-option>
-			<mat-option value="sale">Sale</mat-option>
-		</mat-select>
-		<mat-label>Buy/Sale</mat-label>
-	</mat-form-field>
+	<form [formGroup]="form">
+		
+		<mat-form-field appearance="outline">
+			<mat-label>Symbol</mat-label>
+			<input type="text" placeholder="Symbol" aria-label="Assignee" matInput
+			formControlName="symbol" [matAutocomplete]="auto">
+			<mat-autocomplete #auto="matAutocomplete">
+				<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+				{{option}}
+				</mat-option>
+			</mat-autocomplete>
+		</mat-form-field>
+		<mat-form-field appearance="outline" class="input">
+			<mat-label>Count</mat-label>
+			<input matInput type="number" formControlName="num"
+			 placeholder="Count">
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Rate</mat-label>
+			<input matInput type="number" formControlName="rate"
+			 placeholder="Rate">
+		</mat-form-field>
+		<mat-form-field appearance="outline" class="input">
+			<mat-select formControlName="type">
+				<mat-option value="buy">Buy</mat-option>
+				<mat-option value="sale">Sale</mat-option>
+			</mat-select>
+			<mat-label>Type</mat-label>
+		</mat-form-field>
+		
+	</form>
+	
 </div>

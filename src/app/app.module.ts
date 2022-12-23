@@ -16,14 +16,20 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReportComponent } from './comp/report/report.component';
+import { APIService } from './comp/api.service';
 
 const routes = [
   { path: '', component: ContentComponent },
   { path: 'data-entry', component: ContentComponent },
-  { path: 'report', component: ReportComponent },
+  { path: 'analysis', component: ReportComponent },
 ];
 
 @NgModule({
@@ -49,8 +55,14 @@ const routes = [
     MatToolbarModule,
     RouterModule.forRoot(routes),
     MatTableModule,
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
   ],
-  providers: [],
+  providers: [APIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

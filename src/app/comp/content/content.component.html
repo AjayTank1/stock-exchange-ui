@@ -1,9 +1,17 @@
-<div *ngFor="let entry of entries,let i = index " class="data-entry">
-	<data-entry (updateEvent)="updateEvent($event,i)"></data-entry>
-	<button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+<form [formGroup]="form">
+	<mat-form-field>
+		<mat-label>Date</mat-label>
+		<input matInput [matDatepicker]="cal" formControlName="date">
+		<mat-datepicker-toggle matSuffix [for]="cal"></mat-datepicker-toggle>
+		<mat-datepicker #cal></mat-datepicker>
+	</mat-form-field>
+	<div *ngFor="let transaction of getCtrls(); let i=index" class="data-entry">
+		<data-entry [index]="i"></data-entry>
+		<button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
 		<mat-icon>delete</mat-icon>
     </button>
-</div>
+	</div>
+</form>
 
 <button mat-button color="primary" (click)="addDataEntry()">ADD</button>
 <button mat-button color="primary" (click)="saveData()">SAVE</button>
